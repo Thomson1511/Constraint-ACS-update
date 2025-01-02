@@ -7353,6 +7353,36 @@ function showErrors(){
     error.textContent = errorNumber;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('intro-video');
+    const videoOverlay = document.getElementById('video-overlay');
+    const mainContent = document.getElementById('main-content');
+    const centerBox = document.getElementById('container');
+    const hintBox = document.getElementById('hintContainer');
+    const iconBox = document.getElementById('iconDiv');
+  
+    video.addEventListener('ended', () => {
+      videoOverlay.style.display = 'none';
+      mainContent.style.display = 'flex';
+      mainContent.style.flexDirection = 'column';
+      hintBox.style.display = 'flex';
+  
+      // Beúszó animáció indítása
+      mainContent.classList.add('animate-background');
+  
+      // Kis késleltetés után hozzáadjuk az animációt a center-box elemhez
+      setTimeout(() => {
+        centerBox.classList.add('show');
+        
+      }, 3000); // A háttér animáció időtartama után
+      setTimeout(() => {
+        iconBox.classList.add('show');
+        
+      }, 4500);
+    });
+  });
+
+
   // DOMContentLoaded eseménykezelő a biztonságos DOM manipulációhoz
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('firstGroup').addEventListener('change', filterConstraints);

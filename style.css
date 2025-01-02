@@ -7,6 +7,55 @@
     src: url(Fonts/Blinker-Regular.ttf);
 }
 
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#video-overlay video {
+max-width: 100%;
+max-height: 100%;
+}
+
+#main-content {
+    display: none; /* Alapból elrejtjük a tartalmat */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#00064E, #000000); /* Lineáris gradient */
+    transform: translateY(-100vh); /* Kezdetben a képernyő fölé helyezzük */
+    overflow: hidden; /* Az animáció során ne lógjon ki */
+}
+
+#main-content.animate-background {
+    animation: slide-in 3s forwards; 
+  }
+  
+  @keyframes slide-in {
+    0% {
+      transform: translateY(-100vh); /* Kezdetben a képernyő fölött van */
+    }
+    100% {
+      transform: translateY(0); /* Végül a normál pozícióba kerül */
+    }
+  }
+
+#container.show {
+transform: scale(1); /* Normál méretre nagyít */
+opacity: 1;
+}
+
 *{
     color: white;
 }
@@ -39,7 +88,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
-    background: linear-gradient(#00064E, #000000);
+    background: black;
 }
 
 .container{
@@ -49,6 +98,9 @@ body{
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
 }
 .first-section{
     height: 110px;
@@ -300,7 +352,7 @@ select option{
 }
 
 #hintContainer{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 400px;
@@ -310,13 +362,23 @@ select option{
 }
 
 .iconImg{
+    display: flex;
     height: 100px;
     width: 100px;
     background: url(Images/Final.png);
     background-size: contain;
     margin-top: 20px;
     margin-bottom: 20px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 3s ease, opacity 3s ease;
 }
+
+.iconImg.show {
+    transform: scale(1); /* Normál méretre nagyít */
+    opacity: 1;
+}
+
 
 .selector{
     display: none;

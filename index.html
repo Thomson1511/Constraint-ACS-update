@@ -12,13 +12,23 @@
 </head>
 <body>
 
+    <div id="video-overlay">
+        <video id="intro-video" autoplay muted>
+          <source src="Animation/Animation_VY.mp4" type="video/mp4">
+          Az Ön böngészője nem támogatja a videók lejátszását.
+        </video>
+    </div>
+
     <div id="RefreshConstraints" onclick="RefreshConst()">Refresh</div>
     <div id="VersionNo" onclick="ShowVersionNo()">Show version numbers</div>
     <div id="removeError" onclick="removeLastError()">Remove</div>
 
-    <div class="iconImg"></div>
+    
 
-    <div class="container">
+
+    <div id="main-content">
+    <div class="iconImg" id="iconDiv"></div>
+    <div class="container" id="container">
         <div class="first-section">
             <div class="backgFirst">
                 <div class="arrow-outline"></div>
@@ -223,6 +233,7 @@
             <button class="hint" onclick="showHint()">Hint</button>
             <button class="next" onclick="nextConstraint()">Next</button>
         </div>
+    </div>
     </div>
 
     <div id="hintContainer"></div>
